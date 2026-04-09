@@ -24,10 +24,54 @@ ChaatBazar is an interactive online street food platform dedicated to bringing a
 - Smooth animations and hover effects  
 - Search and filter functionality  
 
-## Demo
-[Add link to live demo or screenshots/GIFs here]
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-## Installation & Setup
-1. Clone this repository  
+## 📥 Submitting a Pull Request
+
+Follow these steps to contribute your changes to **ChaatBazar**:
+
+1. **🌟 Star & Fork the Repository**  
+   Click the **“Fork”** the repo to create your own copy:  
+   👉 [https://github.com/PatelHarsh2006/ChaatBazaar](https://github.com/PatelHarsh2006/ChaatBaazar)
+
+2. **📥 Clone Your Fork**  
+   Use the following command to clone your forked repository to your local machine:
    ```bash
-   git clone https://github.com/<your-username>/chaatbazar.git
+   git clone https://github.com/PatelHarsh2006/ChaatBaazar.git
+   ```
+ 3. Create a Branch
+    Navigate to the project directory and create a new branch for your changes:
+
+    ```bash
+      cd ChaatBazaar
+      git checkout -b my-feature-branch
+    ```
+
+ 4. Make Changes
+    Add your new ML projects, games, websites, or enhancements. Fix bugs or improve UI/UX as needed.
+
+ 5. Commit Your Changes
+    Use a meaningful commit message:
+
+    ```bash
+    git add .
+    git commit -m "📦 [Feature Add] Add XYZ website project"
+    ```
+
+ 6. Push Your Changes
+    Push your branch to your GitHub fork:
+
+    ```bash
+    git push origin my-feature-branch
+    ```
+ 7. Submit a Pull Request
+
+    Go to your fork on GitHub.
+
+    Click "Compare & pull request".
+
+    Add a descriptive title using one of the prefixes: [UI], [UX], [Feature Add].
+
+    Link the related issue (if any) and clearly describe your changes.
+
+   git clone https://github.com/<your-username>/chaatbaazar.git

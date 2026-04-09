@@ -24,9 +24,12 @@ ChaatBazar is an interactive online street food platform dedicated to bringing a
 - Smooth animations and hover effects  
 - Search and filter functionality  
 
+
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
+
 ## 📥 Submitting a Pull Request
+
 
 Follow these steps to contribute your changes to **ChaatBazar**:
 
@@ -73,5 +76,4 @@ Follow these steps to contribute your changes to **ChaatBazar**:
     Add a descriptive title using one of the prefixes: [UI], [UX], [Feature Add].
 
     Link the related issue (if any) and clearly describe your changes.
-
-   git clone https://github.com/<your-username>/chaatbaazar.git
+    

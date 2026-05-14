@@ -94,8 +94,10 @@ Follow these steps to contribute your changes to **ChaatBazaar**:
 ## Important points for Contributors to keep in Mind :
 
 1. Maintain the Orange theme, throughout the Wesbite.
+   
+2. Upload Before and After screenshots in the Pull request.
 
-2. If the original repository gets updated after you fork it, you should sync your fork before creating a new PR. This prevents merge conflicts and outdated code.<br>
+3. If the original repository gets updated after you fork it, you should sync your fork before creating a new PR. This prevents merge conflicts and outdated code.<br>
 So always follow the below steps, before any Pull request, for the corresponding Branch, to keep the repository upto date :
 
 

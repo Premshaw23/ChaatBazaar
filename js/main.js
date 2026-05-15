@@ -50,7 +50,12 @@ const cartItemsContainer = document.getElementById("cart-items");
 const cartTotal = document.getElementById("cart-total");
 const checkoutBtn = document.getElementById("checkout-btn");
 
-let cart = [];
+let cart = JSON.parse(localStorage.getItem('chaatCart')) || [];
+
+function saveCart() {
+  localStorage.setItem('chaatCart', JSON.stringify(cart));
+}
+
 
 function formatPrice(price) {
   return `₹${price}`;
@@ -154,6 +159,7 @@ function addToCart(id) {
   }
   updateCartCount();
   renderCart();
+  saveCart();
 }
 
 function removeFromCart(id) {
@@ -167,6 +173,7 @@ function removeFromCart(id) {
   }
   updateCartCount();
   renderCart();
+  saveCart();
 }
 
 // ===== Event Listeners =====

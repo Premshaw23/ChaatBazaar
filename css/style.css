@@ -1066,6 +1066,8 @@
 /* Slider Custom Styles */
 .filter-group input[type="range"] {
   -webkit-appearance: none;
+  -moz-appearance: none;
+   appearance: none;
   width: 100%;
   height: 6px;
   border-radius: 3px;
@@ -1538,4 +1540,175 @@ mark.highlight {
   background: #bf360c;
   box-shadow: 0 6px 20px rgba(191, 54, 12, 0.4);
   transform: translateY(-1px);
+}
+/* ===== Dark Mode Theme ===== */
+.theme-toggle {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #e64a19;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.theme-toggle:hover {
+  background: #e66900;
+}
+/* body */
+body.dark {
+  background: #1e1e1e;
+  color: #f5f5f5;
+}
+
+/* Headings  */
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4{
+  color: #ff5722;
+}
+body.dark p{
+  color: #ffab91;
+}
+
+/* Header & Navigation */
+body.dark header {
+  background: #2c2c2c;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+}
+body.dark nav a {
+  color: #f5f5f5;
+}
+body.dark nav a:hover,
+body.dark nav a.active {
+  background: #ff5722;
+  box-shadow: 0 0 8px rgba(255, 87, 34, 0.8);
+}
+body.dark .dropdown-menu {
+  background: #333;
+}
+body.dark .dropdown-menu a:hover {
+  background: #ff5722;
+}
+
+/* Hero Section */
+body.dark .hero {
+  background: linear-gradient(120deg, #3b1f17, #2c150d);
+  color: #fff3e0;
+}
+body.dark .btn-primary {
+  background: #ff5722;
+  color: #fff;
+}
+body.dark .btn-primary:hover {
+  background: #e64a19;
+}
+
+/* Cards & Containers */
+body.dark .card,
+body.dark .skeleton-card,
+body.dark .skeleton-cart-item {
+  background: #2a2a2a;
+  color: #eee;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+body.dark .card h3 {
+  color: #ff5722;
+}
+body.dark .card p.price {
+  color: #ffab91;
+}
+body.dark .card p.description {
+  color: #ccc;
+}
+
+/* Sections */
+body.dark section.menu,
+body.dark section.specials,
+body.dark section.about,
+body.dark section.testimonials {
+  background: #252525;
+  color: #eee;
+}
+body.dark .filter-btn {
+  background: transparent;
+  border: 2px solid #ff5722;
+  color: #ff5722;
+}
+body.dark .filter-btn.active,
+body.dark .filter-btn:hover {
+  background: #ff5722;
+  color: #fff;
+}
+
+/* Cart Sidebar */
+body.dark #cart-sidebar {
+  background: #2b2b2b;
+  box-shadow: -6px 0 25px rgba(0, 0, 0, 0.6);
+}
+body.dark #cart-header {
+  background: #ff5722;
+}
+body.dark .cart-item {
+  background: #333;
+}
+
+body.dark #checkout-btn {
+  background: #ff5722;
+  color: #fff;
+}
+
+/* Forms */
+body.dark form.contact-form {
+  background: #2b2b2b;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+body.dark form.contact-form input,
+body.dark form.contact-form textarea {
+  background: #1e1e1e;
+  color: #f5f5f5;
+  border-color: #444;
+}
+body.dark .btn-submit {
+  background: #ff5722;
+}
+
+/* Testimonials */
+body.dark .testimonial {
+  background: #2a2a2a;
+  color: #ddd;
+}
+body.dark .testimonial::before {
+  color: #ff5722;
+}
+
+/* Newsletter */
+body.dark section.newsletter {
+  background: #2c2c2c;
+  color: #fff;
+}
+body.dark .newsletter-form button {
+  background: #ff5722;
+  color: #fff;
+}
+
+/* Footer */
+body.dark footer {
+  background: #111;
+  color: #eee;
+}
+body.dark .social-icons a:hover {
+  color: #ff5722;
+}
+
+/* Skeleton Animation background  */
+body.dark .skeleton {
+  background: linear-gradient(
+    90deg,
+    #534949 25%,
+    #444 50%,
+    #3a3a3a 75%
+  );
 }

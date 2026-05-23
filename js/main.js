@@ -955,3 +955,32 @@ function showSkeletonCartItems(count = 2) {
     cartItemsContainer.appendChild(createSkeletonCartItem());
   }
 }
+// dark-mode
+const toggleBtn = document.getElementById("theme-toggle");
+
+// Load saved theme on page load
+document.addEventListener("DOMContentLoaded", () => {
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark");
+    if (toggleBtn) toggleBtn.textContent = "☀️";
+  } else {
+    if (toggleBtn) toggleBtn.textContent = "🌙";
+  }
+});
+
+// Toggle dark/light mode
+if (toggleBtn) {
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+      toggleBtn.textContent = "☀️";
+      localStorage.setItem("theme", "dark");
+    } else {
+      toggleBtn.textContent = "🌙";
+      localStorage.setItem("theme", "light");
+    }
+  });
+}

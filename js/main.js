@@ -356,6 +356,7 @@ function renderOrdersList() {
         <div class="order-meta-info">
           <span class="order-id">Order ID: <strong>${order.id}</strong></span>
           <span class="order-date">${order.date}</span>
+          ${order.deliveryDistance ? `<span class="order-distance">📍 Distance: ${order.deliveryDistance.toFixed(2)} km</span>` : ""}
         </div>
         <span class="status-badge ${statusClass}">${order.status}</span>
       </div>
@@ -418,9 +419,16 @@ window.filterCategory = function(category) {
   });
 };
 
-window.checkout = function() {
+window.checkout = async function() {
   if (cart.length === 0) {
     alert("Your cart is empty!");
+    return;
+  }
+
+  const validationResult = await validateDeliveryLocation();
+
+  if (!validationResult.valid) {
+    alert(validationResult.error);
     return;
   }
 
@@ -433,7 +441,14 @@ window.checkout = function() {
     timestamp: Date.now(),
     items: JSON.parse(JSON.stringify(cart)),
     total: cart.reduce((sum, ci) => sum + ci.item.price * ci.quantity, 0),
-    status: "Pending"
+    status: "Pending",
+    deliveryAddress: {
+      latitude: validationResult.userLocation.latitude,
+      longitude: validationResult.userLocation.longitude,
+      source: validationResult.userLocation.source
+    },
+    deliveryDistance: validationResult.distance,
+    restaurantLocation: validationResult.restaurantLocation
   };
 
   orders.unshift(newOrder);

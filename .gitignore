@@ -66,6 +66,15 @@ coverage/
 *.lcov
 
 # =================================================================
+# LOCAL ISSUE TRACKING (NOT COMMITTED)
+# =================================================================
+RESOLVED_ISSUES.md
+COMPLETED_WORK.md
+ISSUES_TRACKER.md
+LOCAL_NOTES.md
+*.local.md
+
+# =================================================================
 # ✅ RESOLVED ISSUES - DO NOT RECREATE
 # =================================================================
 # Issue: Folder Structure Reorganization (RESOLVED - 3 PRs)

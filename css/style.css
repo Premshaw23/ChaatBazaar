@@ -212,7 +212,8 @@
 
     /* ===== Specials & Menu Section ===== */
     section.specials,
-    section.menu {
+    section.menu,
+    section.recently-viewed {
       padding: 4rem 1rem 5rem;
       background: #fff3e0;
     }
@@ -1687,4 +1688,33 @@ a[href] {
 button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+/* Out of Stock Badge */
+.out-of-stock-badge {
+  background-color: #6c757d !important;  /* Grey color */
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+  margin: 10px 0 5px 0;
+  letter-spacing: 0.5px;
+  text-align: center;
+  width: fit-content;
+}
+
+/* Disabled button styling */
+.add-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #cccccc !important;
+  transform: none !important;
+}
+
+/* Hover effect for disabled button */
+.add-btn:disabled:hover {
+  transform: none !important;
+  opacity: 0.6;
 }

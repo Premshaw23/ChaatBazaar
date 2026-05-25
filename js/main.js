@@ -100,6 +100,16 @@ function createCard(item, highlightQuery = "") {
   const highlightedName = highlightText(item.name, highlightQuery);
   const highlightedDesc = highlightText(item.description, highlightQuery);
 
+  //Check if item is available (default to true if field doesn't exist)
+  const isAvailable = item.available !== undefined ? item.available : true;
+
+  //Creates out of stock badge (ONLY if unavailable)
+  const outOfStockBadge = !isAvailable ? '<span class="out-of-stock-badge">Out of Stock ❌</span>' : '';
+
+  //Disables button and change color if out of stock
+  const buttonDisabled = !isAvailable ? 'disabled' : '';
+  const buttonColor = isAvailable ? '#28a745' : '#cccccc';
+
   card.innerHTML = `
     <img src="${escapedImage}" alt="${escapedName}" loading="lazy" />
     <div class="card-content">
@@ -110,6 +120,7 @@ function createCard(item, highlightQuery = "") {
       <h3>${highlightedName}</h3>
       <p>${highlightedDesc}</p>
       <div class="card-tags">${dietaryTags}</div>
+      ${outOfStockBadge}  <!-- ✅ NEW: Badge added here -->
     </div>
     <div class="card-footer">
       <span class="price">${formatPrice(item.price)}</span>
@@ -118,7 +129,21 @@ function createCard(item, highlightQuery = "") {
   `;
 
   const addBtn = card.querySelector(".add-btn");
-  addBtn.addEventListener("click", () => addToCart(item.id));
+  //Only add event listener if item is available
+  if (isAvailable) {
+    addBtn.addEventListener("click", () => addToCart(item.id));
+  } else {
+    // Optional: Add click handler to show alert
+    addBtn.addEventListener("click", () => {
+      alert(`${item.name} is currently out of stock!`);
+    });
+  }
+
+
+  card.addEventListener("click", () => {
+    RecentlyViewed.addItem(item);
+    renderRecentlyViewed();
+  });
 
   return card;
 }
@@ -140,6 +165,25 @@ function renderSpecials() {
 function renderMenu(filter = "All") {
   currentCategory = filter;
   applyAllFilters();
+}
+
+function renderRecentlyViewed() {
+  const recentlyViewedContainer = document.getElementById("recently-viewed-cards");
+  const recentlyViewedSection = document.getElementById("recently-viewed");
+  if (!recentlyViewedContainer || !recentlyViewedSection) return;
+
+  const recentItems = RecentlyViewed.getItems();
+  recentlyViewedContainer.innerHTML = "";
+
+  if (recentItems.length === 0) {
+    recentlyViewedSection.style.display = "none";
+    return;
+  }
+
+  recentlyViewedSection.style.display = "block";
+  recentItems.forEach(item => {
+    recentlyViewedContainer.appendChild(createCard(item));
+  });
 }
 
 // ===== Unified Interactive Filter Engine =====
@@ -508,6 +552,13 @@ window.reorderOrder = function(orderId) {
 function addToCart(id) {
   const item = menuItems.find(i => i.id === id);
   if (!item) return;
+
+   //Check if item is available
+  const isAvailable = item.available !== undefined ? item.available : true;
+  if (!isAvailable) {
+    alert(`${item.name} is currently out of stock!`);
+    return;
+  }
 
   cartManager.addItem(item, 1);
   updateCartCount();
@@ -884,6 +935,7 @@ async function init() {
   await loadMenuData();
 
   renderSpecials();
+  renderRecentlyViewed();
   applyAllFilters();
   updateCartCount();
   renderCart();

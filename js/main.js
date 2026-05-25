@@ -226,21 +226,26 @@ function renderCart() {
       const cartItem = document.createElement("div");
       cartItem.className = "cart-item";
       cartItem.tabIndex = 0;
+
+      // Escape item data to prevent XSS
+      const escapedName = escapeHTML(item.name);
+      const escapedImage = escapeHTML(item.image);
+
       cartItem.setAttribute(
         "aria-label",
-        `${item.name}, quantity ${quantity},
+        `${escapedName}, quantity ${quantity},
          price ${formatPrice(item.price * quantity)}`
       );
 
       cartItem.innerHTML = `
-        <img src="${item.image}" alt="${item.name}" loading="lazy" />
+        <img src="${escapedImage}" alt="${escapedName}" loading="lazy" />
         <div class="cart-item-info">
-          <h4>${item.name}</h4>
+          <h4>${escapedName}</h4>
           <p>${formatPrice(item.price)} each</p>
           <div class="qty-controls">
-            <button aria-label="Decrease ${item.name}" class="qty-decrease">−</button>
+            <button aria-label="Decrease ${escapedName}" class="qty-decrease">−</button>
             <span>${quantity}</span>
-            <button aria-label="Increase ${item.name}" class="qty-increase">+</button>
+            <button aria-label="Increase ${escapedName}" class="qty-increase">+</button>
           </div>
         </div>
         <div style="text-align:right;">

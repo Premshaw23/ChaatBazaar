@@ -1,0 +1,97 @@
+# =================================================================
+# ENVIRONMENT & SYSTEM FILES
+# =================================================================
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+
+# OS-specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE & Editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.swp
+*.swo
+
+# =================================================================
+# BUILD & DEPENDENCIES
+# =================================================================
+node_modules/
+npm-debug.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+package-lock.json
+yarn.lock
+
+dist/
+build/
+.cache/
+*.tsbuildinfo
+
+# =================================================================
+# LOGS & TEMP FILES
+# =================================================================
+logs/
+*.log
+tmp/
+temp/
+
+# =================================================================
+# TESTING
+# =================================================================
+coverage/
+.nyc_output/
+*.lcov
+
+# =================================================================
+# ✅ RESOLVED ISSUES - DO NOT RECREATE
+# =================================================================
+# Issue: Folder Structure Reorganization (RESOLVED - 3 PRs)
+# Type: Refactoring/Code Organization
+# Details:
+#   - PR 1: Reorganized flat folder structure into modular src/ directory
+#     - Created: src/pages/, src/styles/, src/scripts/, src/assets/, public/
+#     - Moved: HTML files → src/pages/
+#     - Moved: CSS files → src/styles/
+#     - Moved: JS files → src/scripts/ and src/scripts/modules/
+#     - Moved: Data → src/assets/data/
+#     - Moved: Images → src/assets/images/
+#     - Moved: Public files → public/
+#   - PR 2: Updated all HTML file references for new structure
+#     - Updated: CSS link paths (css/style.css → ../styles/style.css)
+#     - Updated: Script src paths (js/*.js → ../scripts/*)
+#     - Updated: Image paths (img/* → ../assets/images/*)
+#     - Updated: Favicon paths in HTML files
+#   - PR 3: Updated JavaScript internal references
+#     - Updated: menu.json fetch path (data/menu.json → ../assets/data/menu.json)
+# Impact: High - affects entire project structure, makes codebase scalable
+# Status: COMPLETED ✅
+
+# DUPLICATE CHECKS - These issues have been fully resolved:
+# ❌ DO NOT create: "Restructure folder organization"
+# ❌ DO NOT create: "Update CSS/JS file references"
+# ❌ DO NOT create: "Move files to new directory structure"
+# ✅ Instead: Reference commits bf5d047, 786340f, ad5175a for context
+# =================================================================

@@ -19,7 +19,7 @@ function setupCartManager() {
 }
 async function loadMenuData() {
   try {
-    const response = await fetch("data/menu.json");
+    const response = await fetch("../assets/data/menu.json");
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }

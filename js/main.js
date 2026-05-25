@@ -68,10 +68,15 @@ function fuzzyMatch(target, query) {
 
 function highlightText(text, query) {
   if (!text) return "";
-  if (!query) return text;
+  if (!query) return escapeHTML(text);
+
+  // Escape HTML special characters first
+  const escapedText = escapeHTML(text);
   const escapedQuery = query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
   const regex = new RegExp(`(${escapedQuery})`, "gi");
-  return text.replace(regex, "<mark class='highlight'>$1</mark>");
+
+  // Replace escaped query with highlighted version
+  return escapedText.replace(regex, "<mark class='highlight'>$1</mark>");
 }
 
 // ===== Render Functions =====
@@ -80,17 +85,23 @@ function createCard(item, highlightQuery = "") {
   const card = document.createElement("article");
   card.className = "card";
   card.tabIndex = 0;
-  card.setAttribute("aria-label", `${item.name} - ${item.description}. Price: ${formatPrice(item.price)}.`);
+
+  // Escape all user-facing content to prevent XSS
+  const escapedName = escapeHTML(item.name);
+  const escapedDesc = escapeHTML(item.description);
+  const escapedImage = escapeHTML(item.image);
+
+  card.setAttribute("aria-label", `${escapedName} - ${escapedDesc}. Price: ${formatPrice(item.price)}.`);
 
   const ratingStars = "⭐".repeat(Math.round(item.rating || 5));
-  const dietaryTags = item.dietary ? item.dietary.map(d => `<span class="tag tag-${d}">${d}</span>`).join(" ") : "";
+  const dietaryTags = item.dietary ? item.dietary.map(d => `<span class="tag tag-${escapeHTML(d)}">${escapeHTML(d)}</span>`).join(" ") : "";
   const spiceIcon = item.spice === "High" ? "🌶️🌶️🌶️" : item.spice === "Medium" ? "🌶️🌶️" : "🌶️";
 
   const highlightedName = highlightText(item.name, highlightQuery);
   const highlightedDesc = highlightText(item.description, highlightQuery);
 
   card.innerHTML = `
-    <img src="${item.image}" alt="${item.name}" loading="lazy" />
+    <img src="${escapedImage}" alt="${escapedName}" loading="lazy" />
     <div class="card-content">
       <div class="card-meta">
         <span class="rating" title="Rating: ${item.rating || 5.0}">${ratingStars} ${item.rating || '5.0'}</span>
@@ -102,7 +113,7 @@ function createCard(item, highlightQuery = "") {
     </div>
     <div class="card-footer">
       <span class="price">${formatPrice(item.price)}</span>
-      <button class="add-btn" aria-label="Add ${item.name} to cart">Add</button>
+      <button class="add-btn" aria-label="Add ${escapedName} to cart">Add</button>
     </div>
   `;
 
